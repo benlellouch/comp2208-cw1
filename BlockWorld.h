@@ -6,6 +6,7 @@
 #define COMP2208_CW1_BLOCKWORLD_H
 
 #include <vector>
+#include <iostream>
 
 #include "Player.h"
 #include "Block.h"
@@ -33,8 +34,8 @@ private:
 
 public:
 
-    BlockWorld(BlockWorld& parent, Direction move);
     BlockWorld();
+    BlockWorld(BlockWorld* parent, Direction move);
 
     BlockWorld* getParent() { return parent; }
     Player getPlayer() { return player; }

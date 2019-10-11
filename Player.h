@@ -14,8 +14,6 @@ public:
 
     Player ( int x, int y ) : Object ( x, y ) {}
 
-    bool setX_pos ( int x );
-    bool setY_pos ( int y );
 };
 
 

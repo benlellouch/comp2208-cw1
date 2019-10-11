@@ -4,11 +4,21 @@
 
 #include "BlockWorld.h"
 
+BlockWorld::BlockWorld() :
+parent(nullptr),
+player(3,0)
+{
+    blocks.push_back(Block(0,0,"A"));
+    blocks.push_back(Block(1,0,"B"));
+    blocks.push_back(Block(2,0,"C"));
+    calculate_possible_move();
+}
+
 BlockWorld::BlockWorld(BlockWorld* parent, Direction move) :
-parent(parent),
-player(parent->getPlayer()),
-blocks(parent->getBlocks()),
-move_taken(move)
+        parent(parent),
+        player(parent->getPlayer()),
+        blocks(parent->getBlocks()),
+        move_taken(move)
 {
     calculate_possible_move();
 }
@@ -29,7 +39,7 @@ void BlockWorld::calculate_possible_move()
     }
     if((player.getX_pos() - 1) >= 0)
     {
-        possible_moves.push_back(left)
+        possible_moves.push_back(left);
     }
 }
 
@@ -38,15 +48,19 @@ void BlockWorld::move(Direction direction)
     switch (direction)
     {
         case up:
+            std::cout << "I go up \n";
             move_up();
             break;
         case down:
+            std::cout << "I go down \n";
             move_down();
             break;
         case left:
+            std::cout << "I go left \n";
             move_left();
             break;
         case right:
+            std::cout << "I go right \n";
             move_right();
             break;
     }
@@ -55,7 +69,8 @@ void BlockWorld::move(Direction direction)
 void BlockWorld::move_up()
 {
     int previous_player_y_pos = player.getY_pos();
-    player.setX_pos(previous_player_y_pos + 1);
+    std::cout << "Previous player y position: " << previous_player_y_pos << "\n";
+    player.setY_pos(previous_player_y_pos + 1);
     for(Block block : blocks)
     {
         if(block.getY_pos() == player.getY_pos())
@@ -68,7 +83,7 @@ void BlockWorld::move_up()
 void BlockWorld::move_down()
 {
     int previous_player_y_pos = player.getY_pos();
-    player.setX_pos(previous_player_y_pos - 1);
+    player.setY_pos(previous_player_y_pos - 1);
     for(Block block : blocks)
     {
         if(block.getY_pos() == player.getY_pos())
