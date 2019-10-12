@@ -5,6 +5,9 @@
 #ifndef COMP2208_CW1_MAIN_H
 #define COMP2208_CW1_MAIN_H
 
+#include "BlockWorld.h"
+
+bool isSolution(BlockWorld* root);
 
 class Main {
 

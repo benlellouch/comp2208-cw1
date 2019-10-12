@@ -8,6 +8,9 @@
 #include "BlockWorld.h"
 #include "Block.h"
 #include "Player.h"
+#include "Main.h"
+
+#include <queue>
 
 class BFS {
 
@@ -20,7 +23,7 @@ private:
 
 public:
 
-    BFS();
+    BFS(){}
 
     void run(BlockWorld* root);
 
