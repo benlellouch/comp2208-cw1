@@ -49,19 +49,15 @@ void BlockWorld::move(Direction direction)
     switch (direction)
     {
         case up:
-            std::cout << "I go up \n";
             move_up();
             break;
         case down:
-            std::cout << "I go down \n";
             move_down();
             break;
         case left:
-            std::cout << "I go left \n";
             move_left();
             break;
         case right:
-            std::cout << "I go right \n";
             move_right();
             break;
     }
@@ -70,25 +66,15 @@ void BlockWorld::move(Direction direction)
 void BlockWorld::move_up()
 {
     int previous_player_y_pos = player.getY_pos();
-    std::cout << "Previous player y position: " << previous_player_y_pos << "\n";
     player.setY_pos(previous_player_y_pos + 1);
 
     for (std::vector<Block>::iterator block = blocks.begin(); block != blocks.end(); ++block)
     {
-        if(block->getY_pos() == player.getY_pos())
+        if(block->getY_pos() == player.getY_pos() && block->getX_pos() == player.getX_pos())
         {
-            std::cout << "I do acknowledge the collision " << previous_player_y_pos << "\n";
             block->setY_pos(previous_player_y_pos);
-            std::cout << "Block new position: " << block->getY_pos() << " for " << block->getName()<< "\n";
         }
     }
-//    for(Block block : blocks)
-//    {
-//        if(block.getY_pos() == player.getY_pos())
-//        {
-//            block.setY_pos(previous_player_y_pos);
-//        }
-//    }
 }
 
 void BlockWorld::move_down()
@@ -98,20 +84,11 @@ void BlockWorld::move_down()
 
     for (std::vector<Block>::iterator block = blocks.begin(); block != blocks.end(); ++block)
     {
-        if(block->getY_pos() == player.getY_pos())
+        if(block->getY_pos() == player.getY_pos() && block->getX_pos() == player.getX_pos())
         {
-            std::cout << "I do acknowledge the collision " << previous_player_y_pos << "\n";
             block->setY_pos(previous_player_y_pos);
-            std::cout << "Block new position: " << block->getY_pos() << " for " << block->getName()<< "\n";
         }
     }
-//    for(Block block : blocks)
-//    {
-//        if(block.getY_pos() == player.getY_pos())
-//        {
-//            block.setY_pos(previous_player_y_pos);
-//        }
-//    }
 }
 
 void BlockWorld::move_left()
@@ -121,23 +98,14 @@ void BlockWorld::move_left()
 
     for (std::vector<Block>::iterator block = blocks.begin(); block != blocks.end(); ++block)
     {
-        if(block->getX_pos() == player.getX_pos())
+        if(block->getY_pos() == player.getY_pos() && block->getX_pos() == player.getX_pos())
         {
-            std::cout << "I do acknowledge the collision " << previous_player_x_pos << "\n";
             block->setX_pos(previous_player_x_pos);
-            std::cout << "Block new position: " << block->getX_pos() << " for " << block->getName()<< "\n";
         }
     }
-//    for(Block block : blocks)
-//    {
-//        if(block.getX_pos() == player.getX_pos())
-//        {
-//            std::cout << "I do acknowledge the collision " << previous_player_x_pos << "\n";
-//            block.setX_pos(previous_player_x_pos);
-//            std::cout << "Block new position: " << block.getX_pos() << " for " << block.getName()<< "\n";
-//        }
-//    }
 }
+
+
 void BlockWorld::move_right()
 {
     int previous_player_x_pos = player.getX_pos();
@@ -145,18 +113,9 @@ void BlockWorld::move_right()
 
     for (std::vector<Block>::iterator block = blocks.begin(); block != blocks.end(); ++block)
     {
-        if(block->getX_pos() == player.getX_pos())
+        if(block->getY_pos() == player.getY_pos() && block->getX_pos() == player.getX_pos())
         {
-            std::cout << "I do acknowledge the collision " << previous_player_x_pos << "\n";
             block->setX_pos(previous_player_x_pos);
-            std::cout << "Block new position: " << block->getX_pos() << " for " << block->getName()<< "\n";
         }
     }
-//    for(Block block : blocks)
-//    {
-//        if(block.getX_pos() == player.getX_pos())
-//        {
-//            block.setX_pos(previous_player_x_pos);
-//        }
-//    }
 }

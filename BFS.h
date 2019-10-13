@@ -19,7 +19,6 @@ private:
     int expanded_nodes;
 
     void expand(BlockWorld* node);
-    void print_solution(BlockWorld* node);
 
 public:
 

@@ -20,6 +20,8 @@ bool isSolution(BlockWorld* blockWorld)
         int pos_x = block_it->getX_pos();
         int pos_y = block_it->getY_pos();
 
+        std::cout << name << " pos x: " << pos_x << " pos y: "<< pos_y << "\n";
+
         if ( name == "A" && pos_x == 1 && pos_y == 2)
         {
             counter++;
@@ -32,15 +34,10 @@ bool isSolution(BlockWorld* blockWorld)
         {
             counter++;
         }
-//        switch (name)
-//        {
-//            case "A":
-//                if(pos_y == 1 && pos_x == 3 )
-//                {
-//                    return true;
-//                }
-//        }
+
     }
+
+    std::cout<< "------- \n";
 
     if(counter == 3)
     {
@@ -48,6 +45,35 @@ bool isSolution(BlockWorld* blockWorld)
     }
 
     return false;
+}
+
+std::string direction_to_string(Direction direction)
+{
+    switch (direction)
+    {
+        case up:
+            return "up";
+        case down:
+            return "down";
+        case left:
+            return "left";
+        case right:
+            return "right";
+    }
+
+    return "unknow direction";
+}
+
+void print_solution(BlockWorld* node)
+{
+    if( node->getParent() == nullptr)
+    {
+        return;
+    } else
+    {
+        std::cout << direction_to_string(node->getMove()) << ", ";
+        print_solution(node->getParent());
+    }
 }
 
 int main(int argc, char *argv[])
@@ -58,75 +84,5 @@ int main(int argc, char *argv[])
 
     BFS bfs;
     bfs.run(root);
-//
-//    BlockWorld child(root, left);
-//
-//    root->move(left);
-//
-//    std::cout << "The player pos is: " << root->getPlayer().getX_pos() << ", " << root->getPlayer().getY_pos() << "\n";
-//
-//    std::cout << "The root player pos is: " << root->getPlayer().getX_pos() << ", " << root->getPlayer().getY_pos() << "\n";
-//    std::cout << "The child player pos is: " << child.getPlayer().getX_pos() << ", " << child.getPlayer().getY_pos() << "\n";
-//    std::cout << " ---- \n";
-//
-//    for(Direction direction : child.getPossible_moves())
-//    {
-//        switch (direction)
-//        {
-//            case up:
-//                std::cout << "Possible child move: up \n";
-//                break;
-//            case down:
-//                std::cout << "Possible child move: down \n";
-//                break;
-//            case left:
-//                std::cout << "Possible child move: left \n";
-//                break;
-//            case right:
-//                std::cout << "Possible child move: right\n";
-//                break;
-//        }
-//
-//    }
-//
-//    std::cout << " ---- \n";
-//
-//
-//    for(Direction direction : root->getPossible_moves())
-//    {
-//        switch (direction)
-//        {
-//            case up:
-//                std::cout << "Possible root move: up \n";
-//                break;
-//            case down:
-//                std::cout << "Possible root move: down \n";
-//                break;
-//            case left:
-//                std::cout << "Possible root move: left \n";
-//                break;
-//            case right:
-//                std::cout << "Possible root move: right\n";
-//                break;
-//        }
-//    }
-//
-//    std::cout << " ---- \n";
-//
-//
-//    for(Block block : child.getBlocks())
-//    {
-//        std::cout << "Block " << block.getName() << " position: " << block.getX_pos() << ", " << block.getY_pos() << " \n";
-//    }
-//
-//    std::cout << " ---- \n";
-//
-//    for(Block block : root->getBlocks())
-//    {
-//        std::cout << "Block " << block.getName() << " position: " << block.getX_pos() << ", " << block.getY_pos() << " \n";
-//    }
-//
-//
-//
-//    exit(0);
+
 }

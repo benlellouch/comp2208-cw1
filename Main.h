@@ -8,6 +8,8 @@
 #include "BlockWorld.h"
 
 bool isSolution(BlockWorld* root);
+void print_solution(BlockWorld* node);
+std::string direction_to_string(Direction direction);
 
 class Main {
 
