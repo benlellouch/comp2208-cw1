@@ -1,0 +1,90 @@
+//
+// Created by benjamin on 19/10/2019.
+//
+
+#include "IDS.h"
+
+IDS::IDS(int depth) :
+expanded_nodes(0)
+{
+    initialize(depth);
+}
+
+void IDS::initialize(int depth)
+{
+    root = new BlockWorld();
+    max_depth = depth;
+    fringe.push(root);
+}
+
+void IDS::run()
+{
+    std::cout << "Start ----- \n";
+
+
+    while (!fringe.empty())
+    {
+//        std::cout << "Max depth: " << max_depth << "\n";
+//        if (expanded_nodes == 50)
+//        {
+//            return;
+//        }
+        BlockWorld* current = fringe.top();
+        fringe.pop();
+        Player player = current->getPlayer();
+
+        if(current->getDepth() > max_depth)
+        {
+            if(fringe.empty())
+            {
+                std::cout << "I get to this part";
+                initialize(max_depth + 1);
+            }
+        } else
+        {
+//            if (current->getParent() != nullptr)
+//            {
+//                BlockWorld* parent = current->getParent();
+//                Player parent_player = parent->getPlayer();
+//                std::cout << "Node number: " << expanded_nodes;
+//                std::cout << " Depth: " << current->getDepth();
+//                std::cout << " Player pos x: " << player.getX_pos() << " pos y: " << player.getY_pos() << " with parent pos x: " << parent_player.getX_pos() << " pos y: " << parent_player.getY_pos() << "  and depth of " << parent->getDepth() <<  "\n";
+//
+//            }else
+//            {
+//                std::cout << "Node number: " << expanded_nodes;
+//                std::cout << " Depth: " << current->getDepth();
+//                std::cout << " Player pos x: " << player.getX_pos() << " pos y: " << player.getY_pos() <<  "\n";
+//            }
+
+
+
+            expanded_nodes ++;
+            if(isSolution(current))
+            {
+            std::cout << "The solution is: ";
+            print_solution(current);
+            std::cout<< "\n";
+            std::cout << "Total number of nodes expanded: " << expanded_nodes << "\n";
+                return;
+            }
+
+            expand(current);
+        }
+
+
+
+    }
+}
+
+void IDS::expand(BlockWorld *node)
+{
+    std::vector<Direction> possible_moves = node->getPossible_moves();
+
+    for(std::vector<Direction>::iterator move_it = possible_moves.begin();
+        move_it != possible_moves.end();
+        ++move_it)
+    {
+        fringe.push(new BlockWorld(node, *move_it));
+    }
+}
