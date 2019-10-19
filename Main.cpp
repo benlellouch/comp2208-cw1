@@ -5,6 +5,7 @@
 #include "Main.h"
 #include "BlockWorld.h"
 #include "BFS.h"
+#include "DFS.h"
 
 #include <iostream>
 
@@ -20,7 +21,7 @@ bool isSolution(BlockWorld* blockWorld)
         int pos_x = block_it->getX_pos();
         int pos_y = block_it->getY_pos();
 
-        std::cout << name << " pos x: " << pos_x << " pos y: "<< pos_y << "\n";
+//        std::cout << name << " pos x: " << pos_x << " pos y: "<< pos_y << "\n";
 
         if ( name == "A" && pos_x == 1 && pos_y == 2)
         {
@@ -82,7 +83,9 @@ int main(int argc, char *argv[])
 
     BlockWorld* root = new BlockWorld();
 
-    BFS bfs;
-    bfs.run(root);
+    DFS dfs;
+    dfs.run(root);
+//    BFS bfs;
+//    bfs.run(root);
 
 }

@@ -32,6 +32,11 @@ private:
     void move_left();
     void move_right();
 
+    void calculate_up();
+    void calculate_down();
+    void calculate_left();
+    void calculate_right();
+
 public:
 
     BlockWorld();

@@ -26,23 +26,83 @@ BlockWorld::BlockWorld(BlockWorld* parent, Direction direction) :
 
 void BlockWorld::calculate_possible_move()
 {
+    int random = rand() % 4;
+    std::cout << random << "\n";
+
+    if(random == 0 )
+    {
+        calculate_down();
+        calculate_left();
+        calculate_up();
+        calculate_right();
+    }
+
+    if (random == 1 )
+    {
+        calculate_down();
+        calculate_left();
+        calculate_right();
+        calculate_up();
+    }
+
+    if (random == 2)
+    {
+        calculate_up();
+        calculate_right();
+        calculate_left();
+        calculate_down();
+    }
+
+    if (random == 3)
+    {
+        calculate_left();
+        calculate_up();
+        calculate_down();
+        calculate_right();
+    }
+
+    if(random == 4)
+    {
+        calculate_right();
+        calculate_down();
+        calculate_up();
+        calculate_left();
+    }
+
+}
+
+void BlockWorld::calculate_up()
+{
     if((player.getY_pos() + 1) < grid_size)
     {
         possible_moves.push_back(up);
     }
+}
+void BlockWorld::calculate_down()
+{
     if((player.getY_pos() - 1) >= 0)
     {
         possible_moves.push_back(down);
     }
-    if((player.getX_pos() + 1) < grid_size)
-    {
-        possible_moves.push_back(right);
-    }
+}
+
+void BlockWorld::calculate_left()
+{
     if((player.getX_pos() - 1) >= 0)
     {
         possible_moves.push_back(left);
     }
 }
+
+void BlockWorld::calculate_right()
+{
+    if((player.getX_pos() + 1) < grid_size)
+    {
+        possible_moves.push_back(right);
+    }
+
+}
+
 
 void BlockWorld::move(Direction direction)
 {
