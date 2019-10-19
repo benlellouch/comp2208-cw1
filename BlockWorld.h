@@ -24,6 +24,8 @@ private:
     std::vector<Block> blocks;
     Direction move_taken;
     std::vector<Direction> possible_moves;
+    int depth;
+    int manhattan_distance;
 
     void calculate_possible_move();
 
@@ -36,6 +38,7 @@ private:
     void calculate_down();
     void calculate_left();
     void calculate_right();
+    void calculate_manhattan_distance();
 
 public:
 
@@ -47,6 +50,8 @@ public:
     std::vector<Block> getBlocks() { return blocks; }
     Direction getMove() { return move_taken; }
     std::vector<Direction> getPossible_moves() { return possible_moves; }
+    int getDepth() { return depth; }
+    int getManhattan_distance() { return  manhattan_distance; }
 
     void move(Direction direction);
 

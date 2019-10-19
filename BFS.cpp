@@ -22,6 +22,7 @@ void BFS::run(BlockWorld *root)
             BlockWorld* parent = current->getParent();
             Player parent_player = parent->getPlayer();
             std::cout << "Node number: " << number_of_nodes;
+            std::cout << " Distance from Solution: " << current->getManhattan_distance();
             std::cout << " Player pos x: " << player.getX_pos() << " pos y: " << player.getY_pos() << " with parent pos x: " << parent_player.getX_pos() << " pos y: " << parent_player.getY_pos() <<  "\n";
 
         }

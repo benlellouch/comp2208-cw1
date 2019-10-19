@@ -6,6 +6,7 @@
 #include "BlockWorld.h"
 #include "BFS.h"
 #include "DFS.h"
+#include "IDS.h"
 
 #include <iostream>
 
@@ -38,7 +39,7 @@ bool isSolution(BlockWorld* blockWorld)
 
     }
 
-    std::cout<< "------- \n";
+//    std::cout<< "------- \n";
 
     if(counter == 3)
     {
@@ -79,13 +80,14 @@ void print_solution(BlockWorld* node)
 
 int main(int argc, char *argv[])
 {
-
+//    IDS ids(13);
+//    ids.run();
 
     BlockWorld* root = new BlockWorld();
-
-    DFS dfs;
-    dfs.run(root);
-//    BFS bfs;
-//    bfs.run(root);
+//
+//    DFS dfs;
+//    dfs.run(root);
+    BFS bfs;
+    bfs.run(root);
 
 }
