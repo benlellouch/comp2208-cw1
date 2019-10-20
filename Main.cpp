@@ -7,6 +7,7 @@
 #include "BFS.h"
 #include "DFS.h"
 #include "IDS.h"
+#include "AStar.h"
 
 #include <iostream>
 
@@ -87,7 +88,8 @@ int main(int argc, char *argv[])
 //
 //    DFS dfs;
 //    dfs.run(root);
-    BFS bfs;
-    bfs.run(root);
-
+//    BFS bfs;
+//    bfs.run(root);
+    AStar aStar;
+    aStar.run(root);
 }

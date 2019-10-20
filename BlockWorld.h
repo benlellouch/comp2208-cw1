@@ -51,7 +51,7 @@ public:
     Direction getMove() { return move_taken; }
     std::vector<Direction> getPossible_moves() { return possible_moves; }
     int getDepth() { return depth; }
-    int getManhattan_distance() { return  manhattan_distance; }
+    int getManhattan_distance() const { return  manhattan_distance; }
 
     void move(Direction direction);
 
