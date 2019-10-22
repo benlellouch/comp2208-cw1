@@ -13,7 +13,6 @@ void AStar::run(BlockWorld *root)
     while (!fringe.empty())
     {
         BlockWorld* current = fringe.top();
-//        fringe.pop();
         Player player = current->getPlayer();
 
         number_of_nodes ++;
