@@ -1,19 +1,12 @@
 //
-// Created by benjamin on 11/10/2019.
+// Created by benjamin on 22/10/2019.
 //
 
-#include "Main.h"
-#include "BlockWorld.h"
-#include "BFS.h"
-#include "DFS.h"
-#include "IDS.h"
-#include "AStar.h"
+#include "Search.h"
 
-#include <iostream>
-
-bool isSolution(BlockWorld* blockWorld)
+bool Search::check_for_solution(BlockWorld *node)
 {
-    std::vector<Block> blocks = blockWorld->getBlocks();
+    std::vector<Block> blocks = node->getBlocks();
 
     int counter = 0;
 
@@ -50,7 +43,20 @@ bool isSolution(BlockWorld* blockWorld)
     return false;
 }
 
-std::string direction_to_string(Direction direction)
+void Search::print_solution(BlockWorld *node)
+{
+    if( node->getParent() == nullptr)
+    {
+        return;
+    } else
+    {
+        std::cout << direction_to_string(node->getMove()) << ", ";
+        print_solution(node->getParent());
+    }
+}
+
+
+std::string Search::direction_to_string(Direction direction)
 {
     switch (direction)
     {
@@ -65,22 +71,4 @@ std::string direction_to_string(Direction direction)
     }
 
     return "unknow direction";
-}
-
-void print_solution(BlockWorld* node)
-{
-    if( node->getParent() == nullptr)
-    {
-        return;
-    } else
-    {
-        std::cout << direction_to_string(node->getMove()) << ", ";
-        print_solution(node->getParent());
-    }
-}
-
-int main(int argc, char *argv[])
-{
-    BFS bfs(new BlockWorld());
-    bfs.run();
 }

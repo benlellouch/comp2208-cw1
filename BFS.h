@@ -9,10 +9,10 @@
 #include "Block.h"
 #include "Player.h"
 #include "Main.h"
-
+#include "Search.h"
 #include <queue>
 
-class BFS {
+class BFS : public Search{
 
 private:
     std::queue<BlockWorld*> fringe;
@@ -22,9 +22,9 @@ private:
 
 public:
 
-    BFS(){}
+    BFS(BlockWorld* node) : Search(node){}
 
-    void run(BlockWorld* root);
+    void run();
 
 };
 

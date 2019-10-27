@@ -4,12 +4,12 @@
 
 #include "BFS.h"
 
-void BFS::run(BlockWorld *root)
+void BFS::run()
 {
     int number_of_nodes = 0;
     std::cout << "Start ----- \n";
 
-    fringe.push(root);
+    fringe.push(get_root());
     while (!fringe.empty())
     {
         BlockWorld* current = fringe.front();
@@ -28,10 +28,10 @@ void BFS::run(BlockWorld *root)
         }
 
         fringe.pop();
-        if(isSolution(current))
+        if(Search::check_for_solution(current))
         {
             std::cout << "The solution is: ";
-            print_solution(current);
+            Search::print_solution(current);
             std::cout<< "\n";
             std::cout << "Total number of nodes expanded: " << number_of_nodes << "\n";
             return;
