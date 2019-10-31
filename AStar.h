@@ -9,6 +9,7 @@
 #include "Block.h"
 #include "Player.h"
 #include "Main.h"
+#include "Search.h"
 
 #include <queue>
 #include <vector>
@@ -21,7 +22,7 @@ struct compare
     }
 };
 
-class AStar {
+class AStar: public Search {
 
 private:
     std::priority_queue<BlockWorld*, std::vector<BlockWorld*>, compare> fringe;
@@ -31,9 +32,9 @@ private:
 
 public:
 
-    AStar(){}
+    AStar(BlockWorld* node) : Search(node){}
 
-    void run(BlockWorld* root);
+    void run();
 
 };
 

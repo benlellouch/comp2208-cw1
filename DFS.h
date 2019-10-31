@@ -9,10 +9,11 @@
 #include "Block.h"
 #include "Player.h"
 #include "Main.h"
+#include "Search.h"
 
 #include <stack>
 
-class DFS {
+class DFS : public Search{
 
 private:
     std::stack<BlockWorld*> fringe;
@@ -22,9 +23,9 @@ private:
 
 public:
 
-    DFS(){}
+    DFS(BlockWorld* node) : Search(node){}
 
-    void run(BlockWorld* root);
+    void run();
 };
 
 

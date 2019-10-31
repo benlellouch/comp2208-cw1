@@ -10,10 +10,11 @@
 #include "Block.h"
 #include "Player.h"
 #include "Main.h"
+#include "Search.h"
 
 #include <stack>
 
-class IDS {
+class IDS : public Search{
 
 private:
     BlockWorld* root;
@@ -27,7 +28,7 @@ private:
 
 public:
 
-    IDS(int depth);
+    IDS(BlockWorld* root, int depth);
 
     void run();
 };

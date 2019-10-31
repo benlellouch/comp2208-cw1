@@ -4,12 +4,12 @@
 
 #include "DFS.h"
 
-void DFS::run(BlockWorld *root)
+void DFS::run()
 {
     int number_of_nodes = 0;
     std::cout << "Start ----- \n";
 
-    fringe.push(root);
+    fringe.push(Search::get_root());
     while (!fringe.empty())
     {
         BlockWorld* current = fringe.top();
@@ -27,7 +27,7 @@ void DFS::run(BlockWorld *root)
         }
 
         fringe.pop();
-        if(isSolution(current))
+        if(Search::check_for_solution(current))
         {
 //            std::cout << "The solution is: ";
 //            print_solution(current);
