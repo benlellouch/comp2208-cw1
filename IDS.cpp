@@ -34,7 +34,7 @@ void IDS::run()
         {
             if(fringe.empty())
             {
-                std::cout << "I get to this part";
+//                std::cout << "I get to this part";
                 initialize(max_depth + 1);
             }
         } else
