@@ -7,7 +7,7 @@
 void DFS::run()
 {
     int number_of_nodes = 0;
-    std::cout << "Start ----- \n";
+//    std::cout << "Start ----- \n";
 
     fringe.push(Search::get_root());
     while (!fringe.empty())
@@ -30,9 +30,10 @@ void DFS::run()
         if(Search::check_for_solution(current))
         {
 //            std::cout << "The solution is: ";
-//            print_solution(current);
+//            Search::print_solution(current);
 //            std::cout<< "\n";
 //            std::cout << "Total number of nodes expanded: " << number_of_nodes << "\n";
+            std::cout << get_number_of_nodes_generated() << "\n";
             return;
         }
 
@@ -49,5 +50,6 @@ void DFS::expand(BlockWorld *node)
         ++move_it)
     {
         fringe.push(new BlockWorld(node, *move_it));
+        increment_number_of_nodes_generated();
     }
 }

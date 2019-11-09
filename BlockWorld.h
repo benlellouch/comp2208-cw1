@@ -44,6 +44,7 @@ public:
 
     BlockWorld();
     BlockWorld(BlockWorld* parent, Direction move);
+    BlockWorld(int x_player, int y_player, int x_a, int y_a, int x_b, int y_b, int x_c, int y_c);
 
     BlockWorld* getParent() { return parent; }
     Player getPlayer() { return player; }

@@ -11,6 +11,7 @@ class Search {
 
 private:
     BlockWorld* root;
+    int number_of_nodes_generated = 0;
 public:
     Search (BlockWorld* node) : root(node) {}
 
@@ -20,6 +21,10 @@ public:
     std::string direction_to_string(Direction direction);
 
     BlockWorld* get_root() { return root;}
+
+    int get_number_of_nodes_generated(){ return number_of_nodes_generated; }
+    void increment_number_of_nodes_generated(){ number_of_nodes_generated ++;}
+
 
 };
 

@@ -13,23 +13,19 @@ expanded_nodes(0)
 
 void IDS::initialize(int depth)
 {
-    root = new BlockWorld();
+    root = get_root();
     max_depth = depth;
     fringe.push(root);
 }
 
 void IDS::run()
 {
-    std::cout << "Start ----- \n";
+//    std::cout << "Start ----- \n";
 
 
     while (!fringe.empty())
     {
-//        std::cout << "Max depth: " << max_depth << "\n";
-//        if (expanded_nodes == 50)
-//        {
-//            return;
-//        }
+
         BlockWorld* current = fringe.top();
         fringe.pop();
         Player player = current->getPlayer();
@@ -45,17 +41,17 @@ void IDS::run()
         {
             if (current->getParent() != nullptr)
             {
-                BlockWorld* parent = current->getParent();
-                Player parent_player = parent->getPlayer();
-                std::cout << "Node number: " << expanded_nodes;
-                std::cout << " Depth: " << current->getDepth();
-                std::cout << " Player pos x: " << player.getX_pos() << " pos y: " << player.getY_pos() << " with parent pos x: " << parent_player.getX_pos() << " pos y: " << parent_player.getY_pos() << "  and depth of " << parent->getDepth() <<  "\n";
+//                BlockWorld* parent = current->getParent();
+//                Player parent_player = parent->getPlayer();
+//                std::cout << "Node number: " << expanded_nodes;
+//                std::cout << " Depth: " << current->getDepth();
+//                std::cout << " Player pos x: " << player.getX_pos() << " pos y: " << player.getY_pos() << " with parent pos x: " << parent_player.getX_pos() << " pos y: " << parent_player.getY_pos() << "  and depth of " << parent->getDepth() <<  "\n";
 
             }else
             {
-                std::cout << "Node number: " << expanded_nodes;
-                std::cout << " Depth: " << current->getDepth();
-                std::cout << " Player pos x: " << player.getX_pos() << " pos y: " << player.getY_pos() <<  "\n";
+//                std::cout << "Node number: " << expanded_nodes;
+//                std::cout << " Depth: " << current->getDepth();
+//                std::cout << " Player pos x: " << player.getX_pos() << " pos y: " << player.getY_pos() <<  "\n";
             }
 
 
@@ -63,10 +59,10 @@ void IDS::run()
             expanded_nodes ++;
             if(Search::check_for_solution(current))
             {
-            std::cout << "The solution is: ";
-            Search::print_solution(current);
-            std::cout<< "\n";
-            std::cout << "Total number of nodes expanded: " << expanded_nodes << "\n";
+//            std::cout << "The solution is: ";
+//            Search::print_solution(current);
+//            std::cout<< "\n";
+            std::cout << get_number_of_nodes_generated() << "\n";
                 return;
             }
 
@@ -87,5 +83,6 @@ void IDS::expand(BlockWorld *node)
         ++move_it)
     {
         fringe.push(new BlockWorld(node, *move_it));
+        increment_number_of_nodes_generated();
     }
 }

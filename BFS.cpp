@@ -7,9 +7,10 @@
 void BFS::run()
 {
     int number_of_nodes = 0;
-    std::cout << "Start ----- \n";
+//    std::cout << "Start ----- \n";
 
     fringe.push(get_root());
+    increment_number_of_nodes_generated();
     while (!fringe.empty())
     {
         BlockWorld* current = fringe.front();
@@ -19,21 +20,22 @@ void BFS::run()
 
         if (current->getParent() != nullptr)
         {
-            BlockWorld* parent = current->getParent();
-            Player parent_player = parent->getPlayer();
-            std::cout << "Node number: " << number_of_nodes;
-            std::cout << " Distance from Solution: " << current->getManhattan_distance();
-            std::cout << " Player pos x: " << player.getX_pos() << " pos y: " << player.getY_pos() << " with parent pos x: " << parent_player.getX_pos() << " pos y: " << parent_player.getY_pos() <<  "\n";
+//            BlockWorld* parent = current->getParent();
+//            Player parent_player = parent->getPlayer();
+//            std::cout << "Node number: " << number_of_nodes;
+//            std::cout << " Distance from Solution: " << current->getManhattan_distance();
+//            std::cout << " Player pos x: " << player.getX_pos() << " pos y: " << player.getY_pos() << " with parent pos x: " << parent_player.getX_pos() << " pos y: " << parent_player.getY_pos() <<  "\n";
 
         }
 
         fringe.pop();
         if(Search::check_for_solution(current))
         {
-            std::cout << "The solution is: ";
-            Search::print_solution(current);
-            std::cout<< "\n";
-            std::cout << "Total number of nodes expanded: " << number_of_nodes << "\n";
+//            std::cout << "The solution is: ";
+//            Search::print_solution(current);
+//            std::cout<< "\n";
+//            std::cout << "Total number of nodes expanded: " << get_number_of_nodes_generated() << "\n";
+            std::cout << get_number_of_nodes_generated() << "\n";
             return;
         }
 
@@ -50,6 +52,8 @@ void BFS::expand(BlockWorld *node)
         ++move_it)
     {
         fringe.push(new BlockWorld(node, *move_it));
+        increment_number_of_nodes_generated();
+
     }
 }
 

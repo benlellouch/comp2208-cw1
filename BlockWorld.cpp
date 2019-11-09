@@ -13,7 +13,17 @@ depth(0)
     blocks.push_back(Block(1,0,"B"));
     blocks.push_back(Block(2,0,"C"));
     calculate_possible_move();
-    calculate_manhattan_distance();
+}
+
+BlockWorld::BlockWorld(int x_player, int y_player, int x_a, int y_a, int x_b, int y_b, int x_c, int y_c) :
+parent(nullptr),
+player(x_player,y_player),
+depth(0)
+{
+    blocks.push_back(Block(x_a,y_a,"A"));
+    blocks.push_back(Block(x_b,y_b,"B"));
+    blocks.push_back(Block(x_c,y_c,"C"));
+    calculate_possible_move();
 }
 
 BlockWorld::BlockWorld(BlockWorld* parent, Direction direction) :
@@ -31,7 +41,6 @@ BlockWorld::BlockWorld(BlockWorld* parent, Direction direction) :
 void BlockWorld::calculate_possible_move()
 {
     int random = rand() % 4;
-//    std::cout << random << "\n";
 
     if(random == 0 )
     {
@@ -57,7 +66,7 @@ void BlockWorld::calculate_possible_move()
         calculate_down();
     }
 
-    if (random == 3)
+    if (random == 4)
     {
         calculate_left();
         calculate_up();
@@ -65,7 +74,7 @@ void BlockWorld::calculate_possible_move()
         calculate_right();
     }
 
-    if(random == 4)
+    if(random == 3)
     {
         calculate_right();
         calculate_down();
@@ -186,7 +195,10 @@ void BlockWorld::move_right()
 
 void BlockWorld::calculate_manhattan_distance()
 {
-    manhattan_distance = 0;
+
+        manhattan_distance = 0;
+
+
 
     for (std::vector<Block>::iterator block = blocks.begin(); block != blocks.end(); ++block)
     {

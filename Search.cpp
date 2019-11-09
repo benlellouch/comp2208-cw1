@@ -70,5 +70,5 @@ std::string Search::direction_to_string(Direction direction)
             return "right";
     }
 
-    return "unknow direction";
+    return "unknown direction";
 }
