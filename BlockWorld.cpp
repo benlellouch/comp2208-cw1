@@ -5,9 +5,10 @@
 #include "BlockWorld.h"
 
 BlockWorld::BlockWorld() :
-parent(nullptr),
-player(3,0),
-depth(0)
+            parent(nullptr),
+            player(3,0),
+            depth(0),
+            root(true)
 {
     blocks.push_back(Block(0,0,"A"));
     blocks.push_back(Block(1,0,"B"));
@@ -16,9 +17,10 @@ depth(0)
 }
 
 BlockWorld::BlockWorld(int x_player, int y_player, int x_a, int y_a, int x_b, int y_b, int x_c, int y_c) :
-parent(nullptr),
-player(x_player,y_player),
-depth(0)
+            parent(nullptr),
+            player(x_player,y_player),
+            depth(0),
+            root(true)
 {
     blocks.push_back(Block(x_a,y_a,"A"));
     blocks.push_back(Block(x_b,y_b,"B"));
@@ -27,11 +29,12 @@ depth(0)
 }
 
 BlockWorld::BlockWorld(BlockWorld* parent, Direction direction) :
-        parent(parent),
-        player(parent->getPlayer()),
-        blocks(parent->getBlocks()),
-        depth(parent->getDepth() + 1),
-        move_taken(direction)
+            parent(parent),
+            player(parent->getPlayer()),
+            blocks(parent->getBlocks()),
+            depth(parent->getDepth() + 1),
+            move_taken(direction),
+            root(false)
 {
     move(direction);
     calculate_possible_move();

@@ -13,6 +13,7 @@
 #include "Search.h"
 
 #include <stack>
+#include <vector>
 
 class IDS : public Search{
 

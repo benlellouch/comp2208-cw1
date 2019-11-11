@@ -51,7 +51,7 @@ int main(int argc, char *argv[])
     }
     else if (strcmp(argv[1],"IDS") == 0)
     {
-        IDS ids(config[depth],0);
+        IDS ids(config[depth],1);
         ids.run();
     }
     else if (strcmp(argv[1],"ASTAR") == 0)

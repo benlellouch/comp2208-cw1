@@ -19,6 +19,7 @@ class BlockWorld {
 
 private:
 
+    bool root;
     BlockWorld* parent;
     Player player;
     std::vector<Block> blocks;
@@ -53,6 +54,7 @@ public:
     std::vector<Direction> getPossible_moves() { return possible_moves; }
     int getDepth() { return depth; }
     int getManhattan_distance() const { return  manhattan_distance; }
+    bool is_root(){return root;}
 
     void move(Direction direction);
 

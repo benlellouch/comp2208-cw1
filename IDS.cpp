@@ -13,6 +13,7 @@ expanded_nodes(0)
 
 void IDS::initialize(int depth)
 {
+    std::cout << "I am at depth " << depth << ".";
     root = get_root();
     max_depth = depth;
     fringe.push(root);
@@ -32,27 +33,35 @@ void IDS::run()
 
         if(current->getDepth() > max_depth)
         {
+            if(!(current->is_root()))
+            {
+                delete current;
+            }
             if(fringe.empty())
             {
-//                std::cout << "I get to this part";
                 initialize(max_depth + 1);
             }
-        } else
+        }
+        else
         {
-            if (current->getParent() != nullptr)
-            {
-//                BlockWorld* parent = current->getParent();
-//                Player parent_player = parent->getPlayer();
-//                std::cout << "Node number: " << expanded_nodes;
-//                std::cout << " Depth: " << current->getDepth();
-//                std::cout << " Player pos x: " << player.getX_pos() << " pos y: " << player.getY_pos() << " with parent pos x: " << parent_player.getX_pos() << " pos y: " << parent_player.getY_pos() << "  and depth of " << parent->getDepth() <<  "\n";
-
-            }else
-            {
-//                std::cout << "Node number: " << expanded_nodes;
-//                std::cout << " Depth: " << current->getDepth();
-//                std::cout << " Player pos x: " << player.getX_pos() << " pos y: " << player.getY_pos() <<  "\n";
-            }
+//            if(current->getDepth() < 5)
+//            {
+//                if (current->getParent() != nullptr)
+//                {
+//                    BlockWorld* parent = current->getParent();
+//                    Player parent_player = parent->getPlayer();
+//                    std::cout << "Node number: " << expanded_nodes;
+//                    std::cout << " Depth: " << current->getDepth();
+//                    std::cout << " Player pos x: " << player.getX_pos() << " pos y: " << player.getY_pos() << " with parent pos x: " << parent_player.getX_pos() << " pos y: " << parent_player.getY_pos() << "  and depth of " << parent->getDepth() <<  "\n";
+//
+//                }else
+//                {
+//                    std::cout << "Node number: " << expanded_nodes;
+//                    std::cout << " Depth: " << current->getDepth();
+//                    std::cout << " Player pos x: " << player.getX_pos() << " pos y: " << player.getY_pos() <<  "\n";
+//                }
+//
+//            }
 
 
 
@@ -67,6 +76,7 @@ void IDS::run()
             }
 
             expand(current);
+//            delete current;
         }
 
 
