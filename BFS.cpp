@@ -6,36 +6,27 @@
 
 void BFS::run()
 {
-    int number_of_nodes = 0;
-//    std::cout << "Start ----- \n";
 
     fringe.push(get_root());
     increment_number_of_nodes_generated();
+    increment_number_of_nodes_expanded();
     while (!fringe.empty())
     {
         BlockWorld* current = fringe.front();
         Player player = current->getPlayer();
 
-        number_of_nodes ++;
-
-        if (current->getParent() != nullptr)
+        if(get_number_of_nodes_expanded() < 10)
         {
-//            BlockWorld* parent = current->getParent();
-//            Player parent_player = parent->getPlayer();
-//            std::cout << "Node number: " << number_of_nodes;
-//            std::cout << " Distance from Solution: " << current->getManhattan_distance();
-//            std::cout << " Player pos x: " << player.getX_pos() << " pos y: " << player.getY_pos() << " with parent pos x: " << parent_player.getX_pos() << " pos y: " << parent_player.getY_pos() <<  "\n";
-
+            Search::print_state(current);
         }
+
+        increment_number_of_nodes_expanded();
+
 
         fringe.pop();
         if(Search::check_for_solution(current))
         {
-//            std::cout << "The solution is: ";
-//            Search::print_solution(current);
-//            std::cout<< "\n";
-//            std::cout << "Total number of nodes expanded: " << get_number_of_nodes_generated() << "\n";
-            std::cout << get_number_of_nodes_generated() << "\n";
+            print_solution(current);
             return;
         }
 

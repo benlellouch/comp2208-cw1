@@ -6,40 +6,29 @@
 
 void AStar::run()
 {
-//    std::cout << "Start ----- \n";
 
     fringe.push(Search::get_root());
     Search::increment_number_of_nodes_generated();
+    increment_number_of_nodes_expanded();
+
     while (!fringe.empty())
     {
         BlockWorld* current = fringe.top();
         Player player = current->getPlayer();
 
 
-        if (current->getParent() != nullptr)
+        if(get_number_of_nodes_expanded() < 10)
         {
-            if(get_number_of_nodes_generated() < 100)
-            {
-//                BlockWorld* parent = current->getParent();
-//                Player parent_player = parent->getPlayer();
-//                std::cout << "Node number: " << get_number_of_nodes_generated();
-//                std::cout << " Distance from Solution: " << current->getManhattan_distance();
-//                std::cout << " Player pos x: " << player.getX_pos() << " pos y: " << player.getY_pos() << " with parent pos x: " << parent_player.getX_pos() << " pos y: " << parent_player.getY_pos() << "  and depth of " << parent->getDepth() <<  "\n";
-            }
-
-
+            Search::print_state(current);
         }
+
+        increment_number_of_nodes_expanded();
 
         fringe.pop();
         if(Search::check_for_solution(current))
         {
-//            std::cout << "The solution is: ";
-//            Search::print_solution(current);
-//            std::cout<< "\n";
-//            std::cout << "Total number of nodes expanded: " << Search::get_number_of_nodes_generated() << "\n";
-//            std::cout << "Depth of solution: " << current->getDepth();
-            std::cout << get_number_of_nodes_generated() << "\n";
-//
+            print_state(current);
+            print_solution(current);
             return;
         }
 

@@ -20,7 +20,6 @@ class IDS : public Search{
 private:
     BlockWorld* root;
     std::stack<BlockWorld*> fringe;
-    int expanded_nodes;
     int max_depth;
 
     void expand(BlockWorld* node);
@@ -30,6 +29,7 @@ private:
 public:
 
     IDS(BlockWorld* root, int depth);
+
 
     void run();
 };

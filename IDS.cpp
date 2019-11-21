@@ -5,30 +5,28 @@
 #include "IDS.h"
 
 IDS::IDS(BlockWorld* root, int depth) :
-Search(root),
-expanded_nodes(0)
+Search(root)
 {
     initialize(depth);
 }
 
 void IDS::initialize(int depth)
 {
-    std::cout << "I am at depth " << depth << ".";
+    std::cout<<"Depth increased: " << depth << "\n";
     root = get_root();
     max_depth = depth;
     fringe.push(root);
+    increment_number_of_nodes_generated();
 }
 
 void IDS::run()
 {
-//    std::cout << "Start ----- \n";
-
 
     while (!fringe.empty())
     {
 
         BlockWorld* current = fringe.top();
-        fringe.pop();
+         fringe.pop();
         Player player = current->getPlayer();
 
         if(current->getDepth() > max_depth)
@@ -44,39 +42,20 @@ void IDS::run()
         }
         else
         {
-//            if(current->getDepth() < 5)
-//            {
-//                if (current->getParent() != nullptr)
-//                {
-//                    BlockWorld* parent = current->getParent();
-//                    Player parent_player = parent->getPlayer();
-//                    std::cout << "Node number: " << expanded_nodes;
-//                    std::cout << " Depth: " << current->getDepth();
-//                    std::cout << " Player pos x: " << player.getX_pos() << " pos y: " << player.getY_pos() << " with parent pos x: " << parent_player.getX_pos() << " pos y: " << parent_player.getY_pos() << "  and depth of " << parent->getDepth() <<  "\n";
-//
-//                }else
-//                {
-//                    std::cout << "Node number: " << expanded_nodes;
-//                    std::cout << " Depth: " << current->getDepth();
-//                    std::cout << " Player pos x: " << player.getX_pos() << " pos y: " << player.getY_pos() <<  "\n";
-//                }
-//
-//            }
+            if(get_number_of_nodes_expanded() < 50)
+            {
+                Search::print_state(current);
+            }
 
+            increment_number_of_nodes_expanded();
 
-
-            expanded_nodes ++;
             if(Search::check_for_solution(current))
             {
-//            std::cout << "The solution is: ";
-//            Search::print_solution(current);
-//            std::cout<< "\n";
-            std::cout << get_number_of_nodes_generated() << "\n";
+                print_solution(current);
                 return;
             }
 
             expand(current);
-//            delete current;
         }
 
 

@@ -35,7 +35,7 @@ int main(int argc, char *argv[])
 
 
 
-    std::cout << argv[2] << ",";
+//    std::cout << argv[2] << ",";
 
     int depth = atoi(argv[2]) - 1;
 
@@ -51,7 +51,7 @@ int main(int argc, char *argv[])
     }
     else if (strcmp(argv[1],"IDS") == 0)
     {
-        IDS ids(config[depth],1);
+        IDS ids(config[depth],0);
         ids.run();
     }
     else if (strcmp(argv[1],"ASTAR") == 0)
@@ -63,25 +63,7 @@ int main(int argc, char *argv[])
     {
         std::cerr << "Sorry we haven't implemented that algorithm yet. \n";
     }
-//  switch ()
-//  {
-//      case 'B':
-//          BFS bfs(new BlockWorld());
-//          bfs.run();
-//          break;
-//      case 'D':
-//          DFS dfs(new BlockWorld());
-//          dfs.run();
-//          break;
-//      case 'I':
-//          IDS ids(new BlockWorld(),13);
-//          ids.run();
-//          break;
-//      case 'A':
-//          AStar aStar(new BlockWorld());
-//          aStar.run();
-//          break;
-//  }
+
 }
 
 

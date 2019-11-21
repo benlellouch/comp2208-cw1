@@ -45,6 +45,18 @@ public:
 
     BlockWorld();
     BlockWorld(BlockWorld* parent, Direction move);
+    ~BlockWorld()
+    {
+        if(getParent() != nullptr)
+        {
+            if(!(getParent()->is_root()))
+            {
+                BlockWorld* parent = getParent();
+//                delete parent;
+            }
+        }
+
+    }
     BlockWorld(int x_player, int y_player, int x_a, int y_a, int x_b, int y_b, int x_c, int y_c);
 
     BlockWorld* getParent() { return parent; }

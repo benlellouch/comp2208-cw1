@@ -6,34 +6,28 @@
 
 void DFS::run()
 {
-    int number_of_nodes = 0;
-//    std::cout << "Start ----- \n";
 
     fringe.push(Search::get_root());
+    increment_number_of_nodes_expanded();
+    increment_number_of_nodes_generated();
     while (!fringe.empty())
     {
         BlockWorld* current = fringe.top();
         Player player = current->getPlayer();
 
-        number_of_nodes ++;
-
-        if (current->getParent() != nullptr)
+        if(get_number_of_nodes_expanded() < 10)
         {
-            BlockWorld* parent = current->getParent();
-            Player parent_player = parent->getPlayer();
-//            std::cout << "Node number: " << number_of_nodes;
-//            std::cout << " Player pos x: " << player.getX_pos() << " pos y: " << player.getY_pos() << " with parent pos x: " << parent_player.getX_pos() << " pos y: " << parent_player.getY_pos() <<  "\n";
-
+            Search::print_state(current);
         }
+
+        increment_number_of_nodes_expanded();
+
+
 
         fringe.pop();
         if(Search::check_for_solution(current))
         {
-//            std::cout << "The solution is: ";
-//            Search::print_solution(current);
-//            std::cout<< "\n";
-//            std::cout << "Total number of nodes expanded: " << number_of_nodes << "\n";
-            std::cout << get_number_of_nodes_generated() << "\n";
+            print_solution(current);
             return;
         }
 
