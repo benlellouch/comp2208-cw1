@@ -17,7 +17,7 @@ void BFS::run()
 
         if(get_number_of_nodes_expanded() < 10)
         {
-            Search::print_state(current);
+//            Search::print_state(current);
         }
 
         increment_number_of_nodes_expanded();

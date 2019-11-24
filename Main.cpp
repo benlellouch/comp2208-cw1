@@ -35,7 +35,7 @@ int main(int argc, char *argv[])
 
 
 
-//    std::cout << argv[2] << ",";
+    std::cout << argv[2] << ",";
 
     int depth = atoi(argv[2]) - 1;
 
@@ -58,6 +58,22 @@ int main(int argc, char *argv[])
     {
         AStar aStar(config[depth]);
         aStar.run();
+    }
+    else if (strcmp(argv[1],"ALL") == 0)
+    {
+        AStar aStar(config[depth]);
+        aStar.run();
+
+        BFS bfs(config[depth]);
+        bfs.run();
+
+        DFS dfs(config[depth]);
+        dfs.run();
+
+        IDS ids(config[depth],0);
+        ids.run();
+
+        std::cout<< "\n";
     }
     else
     {

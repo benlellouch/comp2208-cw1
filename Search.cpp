@@ -43,23 +43,25 @@ bool Search::check_for_solution(BlockWorld *node)
 
 void Search::print_solution(BlockWorld *node)
 {
-    if( node->is_root())
-    {
-        std::cout << "The solution is: ";
+//    if( node->is_root())
+//    {
+//        std::cout << "The solution is: ";
+//
+//        while (!solution_stack.empty())
+//        {
+//            BlockWorld* top = solution_stack.top();
+//            std::cout << direction_to_string(top->getMove()) << ", ";
+//            solution_stack.pop();
+//        }
+//        std::cout <<"\n Number of nodes generated: " << get_number_of_nodes_generated() << "\n";
+//        return;
+//    } else
+//    {
+//        solution_stack.push(node);
+//        print_solution(node->getParent());
+//    }
 
-        while (!solution_stack.empty())
-        {
-            BlockWorld* top = solution_stack.top();
-            std::cout << direction_to_string(top->getMove()) << ", ";
-            solution_stack.pop();
-        }
-        std::cout <<"\n Number of nodes generated: " << get_number_of_nodes_generated() << "\n";
-        return;
-    } else
-    {
-        solution_stack.push(node);
-        print_solution(node->getParent());
-    }
+    std::cout << get_number_of_nodes_generated() << ",";
 }
 
 void Search::print_state(BlockWorld *node)

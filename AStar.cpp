@@ -19,7 +19,7 @@ void AStar::run()
 
         if(get_number_of_nodes_expanded() < 10)
         {
-            Search::print_state(current);
+//            Search::print_state(current);
         }
 
         increment_number_of_nodes_expanded();
@@ -27,7 +27,7 @@ void AStar::run()
         fringe.pop();
         if(Search::check_for_solution(current))
         {
-            print_state(current);
+//            print_state(current);
             print_solution(current);
             return;
         }
