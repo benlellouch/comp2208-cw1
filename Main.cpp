@@ -64,14 +64,14 @@ int main(int argc, char *argv[])
         AStar aStar(config[depth]);
         aStar.run();
 
-        BFS bfs(config[depth]);
-        bfs.run();
-
         DFS dfs(config[depth]);
         dfs.run();
 
         IDS ids(config[depth],0);
         ids.run();
+
+        BFS bfs(config[depth]);
+        bfs.run();
 
         std::cout<< "\n";
     }
