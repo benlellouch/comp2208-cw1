@@ -198,8 +198,15 @@ void BlockWorld::move_right()
 
 void BlockWorld::calculate_manhattan_distance()
 {
+        if(this->is_root())
+        {
+            manhattan_distance = 0;
 
-        manhattan_distance = 0;
+        }
+        else
+        {
+            manhattan_distance = parent->getManhattan_distance();
+        }
 
 
 
@@ -212,30 +219,30 @@ void BlockWorld::calculate_manhattan_distance()
         if(name == "A")
         {
             manhattan_distance += abs(x_pos - 1) + abs(y_pos -2);
-            if(x_pos == 1 && y_pos == 2)
-            {
-                manhattan_distance -= 1;
-            }
+//            if(x_pos == 1 && y_pos == 2)
+//            {
+//                manhattan_distance -= 1;
+//            }
         }
         if(name == "B")
         {
             manhattan_distance += abs(x_pos -1) + abs(y_pos - 1);
-            if(x_pos == 1 && y_pos == 1)
-            {
-                manhattan_distance -= 1;
-
-            }
+//            if(x_pos == 1 && y_pos == 1)
+//            {
+//                manhattan_distance -= 1;
+//
+//            }
         }
         if(name == "C")
         {
             manhattan_distance += abs(x_pos -1) + abs(y_pos - 0);
-            if(x_pos == 1 && y_pos == 0)
-            {
-                manhattan_distance -= 1;
-
-            }
+//            if(x_pos == 1 && y_pos == 0)
+//            {
+//                manhattan_distance -= 1;
+//
+//            }
         }
     }
 
-    manhattan_distance += depth;
+//    manhattan_distance += depth;
 }
