@@ -14,12 +14,14 @@
 
 #include <stack>
 #include <vector>
+#include <algorithm>
 
 class IDS : public Search{
 
 private:
     BlockWorld* root;
     std::stack<BlockWorld*> fringe;
+    std::vector<BlockWorld*> garbage;
     int max_depth;
 
     void expand(BlockWorld* node);

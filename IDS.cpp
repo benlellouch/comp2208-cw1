@@ -29,25 +29,41 @@ void IDS::run()
          fringe.pop();
         Player player = current->getPlayer();
 
+
+
         if(current->getDepth() > max_depth)
         {
-            if(!(current->is_root()))
-            {
-                delete current;
-            }
+
             if(fringe.empty())
             {
+                for (auto& node : garbage)
+                {
+                    delete node;
+                    node = nullptr;
+                }
+                garbage.erase(std::remove(garbage.begin(), garbage.end(), nullptr), garbage.end());
+
                 initialize(max_depth + 1);
+            }
+            else if(!(current->is_root()))
+            {
+                delete current;
             }
         }
         else
         {
+
             if(get_number_of_nodes_expanded() < 50)
             {
                 Search::print_state(current);
             }
-
             increment_number_of_nodes_expanded();
+
+            if(!(current->is_root()))
+            {
+                garbage.push_back(current);
+            }
+
 
             if(Search::check_for_solution(current))
             {
