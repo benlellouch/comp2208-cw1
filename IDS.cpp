@@ -12,7 +12,7 @@ Search(root)
 
 void IDS::initialize(int depth)
 {
-//    std::cout<<"Depth increased: " << depth << "\n";
+   std::cout<<"Depth increased: " << depth << "\n";
     root = get_root();
     max_depth = depth;
     fringe.push(root);
@@ -53,9 +53,9 @@ void IDS::run()
         else
         {
 
-            if(get_number_of_nodes_expanded() < 50)
+            if(get_number_of_nodes_expanded() < 20)
             {
-//                Search::print_state(current);
+               Search::print_state(current);
             }
             increment_number_of_nodes_expanded();
 
@@ -67,6 +67,8 @@ void IDS::run()
 
             if(Search::check_for_solution(current))
             {
+                std::cout << "Solution found:" << '\n';
+                print_state(current);
                 print_solution(current);
                 return;
             }

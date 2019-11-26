@@ -13,6 +13,9 @@
 
 int main(int argc, char *argv[])
 {
+    if (( atoi(argv[2]) > 18) || (atoi(argv[2]) < 1) ) {
+      std::cerr << "Please input a depth between 1 and 18 \n";
+    }
     std::vector<BlockWorld*> config;
     config.push_back(new BlockWorld(1,2 , 2,2 , 1,1 , 1,0 )); // 1
     config.push_back(new BlockWorld(0,2 , 2,2 , 1,1 , 1,0 )); // 2
@@ -33,9 +36,6 @@ int main(int argc, char *argv[])
     config.push_back(new BlockWorld(1,0 , 2,2 , 2,3 , 3,0 )); // 17
     config.push_back(new BlockWorld(0,0 , 2,2 , 2,3 , 3,0 )); // 18
 
-
-
-    std::cout << argv[2] << ",";
 
     int depth = atoi(argv[2]) - 1;
 
@@ -81,5 +81,3 @@ int main(int argc, char *argv[])
     }
 
 }
-
-

@@ -43,25 +43,24 @@ bool Search::check_for_solution(BlockWorld *node)
 
 void Search::print_solution(BlockWorld *node)
 {
-//    if( node->is_root())
-//    {
-//        std::cout << "The solution is: ";
-//
-//        while (!solution_stack.empty())
-//        {
-//            BlockWorld* top = solution_stack.top();
-//            std::cout << direction_to_string(top->getMove()) << ", ";
-//            solution_stack.pop();
-//        }
-//        std::cout <<"\n Number of nodes generated: " << get_number_of_nodes_generated() << "\n";
-//        return;
-//    } else
-//    {
-//        solution_stack.push(node);
-//        print_solution(node->getParent());
-//    }
+   if( node->is_root())
+   {
+       std::cout << "The solution is: ";
 
-    std::cout << get_number_of_nodes_generated() << ",";
+       while (!solution_stack.empty())
+       {
+           BlockWorld* top = solution_stack.top();
+           std::cout << direction_to_string(top->getMove()) << ", ";
+           solution_stack.pop();
+       }
+       std::cout <<"\n Number of nodes generated: " << get_number_of_nodes_generated() << "\n";
+       return;
+   } else
+   {
+       solution_stack.push(node);
+       print_solution(node->getParent());
+   }
+
 }
 
 void Search::print_state(BlockWorld *node)
@@ -79,7 +78,7 @@ void Search::print_state(BlockWorld *node)
         std::cout << "Node number: " << get_number_of_nodes_expanded() << " at depth : " << node->getDepth() << " with player pos x: " << player.getX_pos() << " pos y: " << player.getY_pos() << " with parent pos x: " << parent_player.getX_pos() << " pos y: " << parent_player.getY_pos() <<  "\n";
     }
 
-    for (int i = 0; i < grid_size; ++i) {
+    for (int i = grid_size -1; i > -1; --i) {
         for (int j = 0; j < grid_size; ++j) {
             pos_used = false;
             if(player.getX_pos() == j && player.getY_pos() == i)

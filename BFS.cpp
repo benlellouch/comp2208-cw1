@@ -17,7 +17,7 @@ void BFS::run()
 
         if(get_number_of_nodes_expanded() < 10)
         {
-//            Search::print_state(current);
+           Search::print_state(current);
         }
 
         increment_number_of_nodes_expanded();
@@ -26,6 +26,8 @@ void BFS::run()
         fringe.pop();
         if(Search::check_for_solution(current))
         {
+            std::cout << "Solution found:" << '\n';
+            print_state(current);
             print_solution(current);
             return;
         }
@@ -47,4 +49,3 @@ void BFS::expand(BlockWorld *node)
 
     }
 }
-
